@@ -313,11 +313,13 @@ div.produk {
       Penulisan padding dan margin seperti padding:20px ini penulisan singkat 
       yang berarti top, right, bottom, left nilainya sama, yaitu 20px 
    */
-  padding: 20px;
-  width: 25%;
+  margin: 20px;
+  padding: 1rem;
+  display: flex;
 }
 
 div.produk img {
+  margin: 10px;
   /* transition membuat animasi transisi dari perubahan style, 0.3s berarti 0.3 detik */
   transition: all 0.3s ease;
 
