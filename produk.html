@@ -52,7 +52,10 @@
   <body>
     <!-- Tulis Kode Bootstrap Di Bawah Sini -->
 
-    <nav class="navbar navbar-dark bg-success navbar-expand-lg bisadicopy">
+    <nav
+      class="navbar navbar-dark shadow-sm navbar-expand-lg bisadicopy"
+      style="background: linear-gradient(to right, rgb(139, 65, 1), orange)"
+    >
       <div class="container">
         <a class="navbar-brand" href="https://www.rikikurnia.com">
           <img src="images/logo/logo_kuy.png" height="40" alt="image" />
@@ -98,104 +101,64 @@
         <p class="fs-4">
           Kualitas terbaik biji kopi pilihan, fresh diambil langsung dari petani
         </p>
-        <hr class="border border-danger border-3 opacity-75" />
+        <hr class="border border-dark border-3 opacity-75" />
 
         <!-- Ini Untuk Select -->
-        <div class="form-floating col-md-4 mx-auto">
-          <select class="form-select" id="select_kopi">
-            <option selected disabled>-</option>
-            <option value="arabica">Arabica</option>
-            <option value="robusta">Robusta</option>
-            <option value="nonkopi">Non Kopi</option>
-          </select>
-          <label for="select_kopi">Pilih JeniS Kopi</label>
+        <div class="row gap-2 gap-md-0">
+          <div class="col-md-4">
+            <div class="input-group input-group-lg h-100">
+              <button
+                aria-readonly="true"
+                disabled
+                class="btn btn-danger"
+                type="button"
+                id="btn-cari-produk"
+              >
+                <i class="bi bi-search"></i>
+              </button>
+              <input
+                id="cari_produk"
+                type="search"
+                class="form-control"
+                placeholder="Cari Produk ..."
+                aria-label="Cari produk search"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-floating">
+              <select class="form-select" id="select_kopi">
+                <option selected value="">Semua</option>
+                <option value="arabica">Arabica</option>
+                <option value="robusta">Robusta</option>
+                <option value="nonkopi">Non Kopi</option>
+              </select>
+              <label class="hitam" for="select_kopi">Pilih Jenis Kopi</label>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-floating">
+              <select class="form-select" id="filter_harga">
+                <option selected disabled>Silahkan Pilih Harga</option>
+                <option value="paling_mahal">Paling Mahal</option>
+                <option value="paling_murah">Paling Murah</option>
+              </select>
+              <label class="hitam" for="filter_harga">Urut Harga</label>
+            </div>
+          </div>
         </div>
 
         <div
+          id="baris_produk"
           class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 text-center mt-5"
           id="baris_produk"
-        >
-          <div class="col mb-4">
-            <div class="card">
-              <img
-                src="images/produk/product_capuchino.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Cappuccino</h5>
-                <div class="row hargasize my-4">
-                  <div class="col">150ml</div>
-                  <div class="col">35.000</div>
-                </div>
-                <a href="#" class="btn btn-success w-100"
-                  ><i class="bi bi-cart-check"></i> Beli</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="col mb-4">
-            <div class="card">
-              <img
-                src="images/produk/product_espresso.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">espresso</h5>
-                <div class="row hargasize my-4">
-                  <div class="col">150ml</div>
-                  <div class="col">35.000</div>
-                </div>
-                <a href="#" class="btn btn-success w-100"
-                  ><i class="bi bi-cart-check"></i> Beli</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="col mb-4">
-            <div class="card">
-              <img
-                src="images/produk/product_kopi_susu.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Kopi Susu</h5>
-                <div class="row hargasize my-4">
-                  <div class="col">150ml</div>
-                  <div class="col">35.000</div>
-                </div>
-                <a href="#" class="btn btn-success w-100"
-                  ><i class="bi bi-cart-check"></i> Beli</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="col mb-4">
-            <div class="card">
-              <img
-                src="images/produk/product_latte.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">latte</h5>
-                <div class="row hargasize my-4">
-                  <div class="col">150ml</div>
-                  <div class="col">35.000</div>
-                </div>
-                <a href="#" class="btn btn-success w-100"
-                  ><i class="bi bi-cart-check"></i> Beli</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
+        ></div>
       </div>
     </section>
 
-    <footer class="riki-block footer-small py-4 bg-success">
+    <footer class="riki-block footer-small py-4">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-12 col-md-8">
@@ -230,37 +193,131 @@
       var sumber = "https://rikikurnia.com/prakerja/api/kopi";
       var sumber2 = "data.json";
 
-      select_kopi.onchange = function () {
-        var dipilih = select_kopi.value;
-        console.log(dipilih);
-        var template = "";
-        $.getJSON(sumber2).then(function (data) {
-          var data_kopi = data[dipilih];
-          console.log(data_kopi);
+      /* 
+      kita buat dulu variable global data kopi
+      supaya nanti data saat melakukan getjson
+      tersimpan di variabel ini.
+      variable global adalah var yang di tulis di luar function()
+      tanda [] menandakan array (kumpulan data) kosong
+      
+      data_kopi_mentah berisi data kopi sebelum melakukan pencarian
+      */
+      var data_kopi = [];
+      var data_kopi_mentah = [];
 
-          data_kopi.forEach((item) => {
-            template += `<div class="col mb-4">
-                                    <div class="card">
-                                        <img src="${item.foto}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">${item.nama}</h5>
-                                            <div class="row hargasize my-4">
-                                                <div class="col">
-                                                    ${item.size}
-                                                </div>
-                                                <div class="col">
-                                                    ${item.harga}
+      /*
+      
+      disini saya buat dulu fungsi pengambilan data
+      agar lebih simple dan dapat berkali2 dijalankan
+      tanpa harus tulis kode getJSon berkali kali
+      fungsi ambilData dapat menerima variabel 'dipilih'
+      yang akan dikirim oleh select onchange
+      */
+
+      function ambilData(dipilih) {
+        $.getJSON(sumber2).then(function (data) {
+          /*
+          data yang sudah diambil dan di filter
+          akan saya simpan ke var data_kopi dan data_kopi_mentah
+          yang sudah saya deklarasi di atas secara global
+          maka tidak oerlu lagi tulis var data_kopi
+          */
+
+          if (dipilih == "") {
+            data_kopi = [];
+            data_kopi.push(...data.arabica);
+            data_kopi.push(...data.robusta);
+            data_kopi.push(...data.nonkopi);
+          } else {
+            data_kopi = data[dipilih];
+          }
+
+          data_kopi_mentah = data_kopi;
+
+          console.log("hasil getjson", data_kopi);
+
+          /* menjalankan fungsi buat tampilan*/
+          buatTampilan();
+        });
+      }
+
+      ambilData("");
+
+      /* fungsi buat tampilan
+      untuk memodifikasi dengan innerHTML
+      agar baris produk berisi file kopi yang sesuai
+      */
+
+      function buatTampilan() {
+        var template = "";
+        data_kopi.forEach((item) => {
+          template += `<div class="col mb-4">
+                                            <div class="card">
+                                                <img src="${item.foto}" style="height: 320px ;" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${item.nama}</h5>
+                                                    <div class="row hargasize my-4">
+                                                        <div class="col">
+                                                            ${item.size}
+                                                        </div>
+                                                        <div class="col">
+                                                            ${item.harga}
+                                                        </div>
+                                                    </div>
+                                                    <a href="${item.link}" class="btn btn-success w-100">
+                                                        <i class="bi bi-cart-check"></i> Beli</a>
                                                 </div>
                                             </div>
-                                            <a href="${item.link}" class="btn btn-success w-100">
-                                                <i class="bi bi-cart-check"></i> Beli</a>
-                                        </div>
-                                    </div>
-                                </div>`;
+                                        </div>`;
+        });
+
+        baris_produk.innerHTML = template;
+      }
+
+      select_kopi.onchange = function () {
+        /* kosongkan kolom pencarian setelah terjadi perubahan select */
+        cari_produk.value = "";
+
+        var dipilih = select_kopi.value;
+        ambilData(dipilih);
+      };
+
+      cari_produk.onkeyup = function () {
+        /*
+        buat variabel untuk menyimpan kata yang diketik di pencarian
+       kita gunakan toLowerCase supaya kaya pencarian
+       dan produk yang dicari tidak case sensitif (beda besar kecil huruf di javascript akan dianggap beda.
+       kopi dan Kopi akan dianggap beda)
+        */
+        var pencarian = cari_produk.value.toLowerCase();
+
+        /*
+        buat fungsi if, jika kolom oencarian kosong
+        maka data yang ditampilkan adalah data_kopi_mentah (semua data)
+        */
+
+        if (pencarian == "") {
+          data_kopi = data_kopi_mentah;
+        } else {
+          /* 
+        
+        untuk pencarian kita gunakan filter dan nilai dari data_kopi 
+        akan kita ubah berdasarkan pencarian
+        
+        */
+
+          data_kopi = data_kopi_mentah.filter((item) => {
+            /*
+            fungsi ini akan membuat data_kopi hanya berisi
+            item2 yang field nama nya sama dengan yang ada di pencarian
+            */
+            return item.nama.toLowerCase().includes(pencarian);
           });
 
-          baris_produk.innerHTML = template;
-        });
+          console.log("pencarian", data_kopi);
+        }
+
+        buatTampilan();
       };
 
       /* Batas Akhir penulisan kode Javascript */

@@ -14,6 +14,7 @@
     <nav>
       <img class="logo" src="images/logo/logo_kuy.png" />
       <div class="navigasi">
+        <a href="#hero">Home</a>
         <a href="#best-seller">Best Seller</a>
         <a href="#our-team">Our Team</a>
         <a href="#review">Review</a>
@@ -28,9 +29,12 @@
       >
     </nav>
 
+    <!-- Pop up-->
+
+
     <!-- Tulis Kode HTML / <header> Setelah baris di bawah ini (baris 28) -->
 
-    <header>
+    <header class="hero" id="hero">
       <div class="kiri">
         <h1 data-aos="fade-up">Kopi Kuy <img src="/images/icon/icon_kopi.svg" alt="" /></h1>
         <p data-aos="fade-up">
@@ -48,6 +52,8 @@
         <img src="images/header/header1.png" alt="" />
       </div>
     </header>
+
+
 
     <section class="best-seller" id="best-seller">
         <h2 data-aos="fade-up">Menu andalan kami</h2>
@@ -172,6 +178,7 @@
 
     <footer>
       <div class="navigasi">
+        <a href="#header">Best Seller</a>
         <a href="#best-seller">Best Seller</a>
         <a href="#our-team">Our Team</a>
         <a href="#review">Review</a>
@@ -193,5 +200,19 @@
     <script>
       AOS.init();
     </script>
+    <script> // JavaScript
+      var popup = document.getElementById("customerServicePopup");
+      var span = document.getElementsByClassName("close")[0];
+      
+      span.onclick = function() {
+        popup.style.display = "none";
+      }
+      
+      window.onclick = function(event) {
+        if (event.target == popup) {
+          popup.style.display = "none";
+        }
+      }
+      </script>
   </body>
 </html>
